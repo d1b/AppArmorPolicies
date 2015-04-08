@@ -1,0 +1,29 @@
+# vim:syntax=apparmor
+#include <tunables/global>
+
+/usr/sbin/openvpn {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability setuid,
+  capability setgid,
+  capability net_admin,
+
+  network packet,
+  network raw,
+
+  @{PROC}/[0-9]*/net/ r,
+  @{PROC}/[0-9]*/net/** r,
+
+  /dev/net/tun rw,
+
+  /bin/ip Pixrm,
+
+  /etc/openvpn/ r,
+  /etc/openvpn/** rw,
+  /run/openvpn/ r,
+  /run/openvpn/** rw,
+
+  #include <local/usr.sbin.openvpn>
+}
+
