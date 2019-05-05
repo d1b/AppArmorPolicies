@@ -8,6 +8,8 @@
   capability setuid,
   capability setgid,
   capability net_admin,
+  capability dac_read_search,
+  capability dac_override,
 
   network packet,
   network raw,
