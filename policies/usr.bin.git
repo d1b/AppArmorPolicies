@@ -52,7 +52,7 @@
 
   owner @{HOME}/.vim/** r,
   owner @{HOME}/.vimrc r,
-  owner @{HOME}/.viminfo r,
+  owner @{HOME}/.viminfo rw,
   owner @{HOME}/.viminfo.tmp rw,
 
 }
