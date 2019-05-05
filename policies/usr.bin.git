@@ -1,0 +1,59 @@
+#include <tunables/global>
+
+/usr/bin/git {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  capability setuid,
+  capability setgid,
+
+  network inet stream,
+  network inet6 stream,
+
+  /lib/x86_64-linux-gnu/ld-*.so mr,
+  /usr/bin/git mr,
+  owner @{HOME}/code/** wrlk,
+  owner @{HOME}/.git wr,
+
+  owner @{HOME}/.gitconfig r,
+  owner @{HOME}/.ssh r,
+  owner @{HOME}/.ssh/** r,
+  owner @{HOME}/.lesshst r,
+
+  /usr/bin/ssh rix,
+  /usr/lib/git-core/** rix,
+
+  /bin/ r,
+  /sbin/ r,
+  /usr/bin/ r,
+  /usr/sbin/ r,
+  /usr/local/bin/ r,
+  /usr/local/sbin/ r,
+
+  /etc/nsswitch.conf r,
+  /etc/passwd r,
+  /etc/papersize r,
+  /etc/ssh/ssh_config r,
+  /etc/ssh/sshd_config r,
+  /etc/ssl/openssl.cnf r,
+
+  owner @{PROC}/[0-9]*/fd r,
+  owner @{PROC}/[0-9]*/fd/ r,
+  owner @{PROC}/[0-9]*/fd/** r,
+
+  /dev/tty rw,
+
+  /usr/bin/ssh rix,
+  /usr/lib/git-core/** rix,
+  /bin/less rix,
+  /usr/bin/vim.basic rix,
+
+  /etc/vim/** r,
+  /usr/share/vim/** r,
+
+  owner @{HOME}/.vim/** r,
+  owner @{HOME}/.vimrc r,
+  owner @{HOME}/.viminfo r,
+  owner @{HOME}/.viminfo.tmp rw,
+
+}
+
