@@ -1,0 +1,51 @@
+
+abi <abi/4.0>,
+
+include <tunables/global>
+
+profile git /usr/bin/git {
+  include <abstractions/base>
+  include <abstractions/consoles>
+  include <abstractions/nameservice>
+  include <abstractions/fonts>
+  include <abstractions/user-tmp>
+  include <abstractions/private-files>
+
+  unix (connect, receive, send),
+
+  /usr/bin/less pixr, 
+  /usr/lib/git-core/** pixr,
+  /usr/bin/wish8.6 ixr,
+  /usr/bin/ssh pixr,
+  /usr/share/tcltk/tcl8.6 rm,
+  /usr/share/tcltk/tcl8.6/** rm,
+  /usr/share/tcltk/tk8.6/** rm,
+
+  /etc/ld.so.cache rlm,
+  /usr/share/terminfo/** rlmk,
+
+  owner @{HOME}/.ssh/known_hosts rm,
+  owner @{HOME}/** rwlk,
+  
+  /etc/.git/config rw,
+
+  /etc/** rwlk,
+  /etc/ rwlk,
+  /usr/share/git-gui/** rm,
+
+  owner /run/user/*/gcr/ssh wlkr,
+  
+  /usr/bin/vim.basic ixr,
+  /usr/bin/nvim ixr,
+
+  /etc/nvim/** rm,
+  /etc/vim/** rm,
+  owner @{HOME}/.vimrc r,
+  owner @{HOME}/.vim/** r,
+
+  /usr/share/vim/** rm,
+
+  owner @{HOME}/.config/neovim/** rm,
+
+
+}
